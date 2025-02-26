@@ -1,7 +1,12 @@
 # DIFFVERS
 
-user: example
-pass: P@ssw0rd
+- amplify user
+  - user: example
+  - pass: P@ssw0rd
+
+- application user
+  - user: example@example.com
+  - pass: P@ssw0rd
 
 # Nuxt Minimal Starter
 
