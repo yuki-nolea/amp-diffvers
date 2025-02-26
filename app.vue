@@ -7,9 +7,16 @@
   <div>
     <authenticator>
       <template v-slot="{ user, signOut }">
-        <h1>Hello {{user?.signInDetails?.loginId}}'s todos</h1>
-        <Todos />
-        <button @click="signOut">Sign Out</button>
+        <UApp>
+          <!--
+          <h1>Hello {{user?.signInDetails?.loginId}}'s todos</h1>
+          <Todos />
+          <button @click="signOut">Sign Out</button>
+          -->
+          <NuxtLayout :signOut="signOut">
+            <NuxtPage />
+          </NuxtLayout>
+      </UApp>
       </template>
     </authenticator>
   </div>
