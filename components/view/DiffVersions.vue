@@ -25,6 +25,7 @@
     </div>
 
     <div class="grow bg-gray-500">
+      {{ str }}
       <div class="h-[800px] bg-orange-900 m-4 mb-12">
         <div class="flex my-[10px] mx-0 row_template ">
             <div class="param_card left_param_card">
@@ -50,6 +51,23 @@
 </template>
 
 <script setup lang="ts">
+  import { fetchAuthSession } from 'aws-amplify/auth';
+
+  const session = await fetchAuthSession();
+
+  const str = await useFetch('/api/params', 
+    {
+      onRequest({request, options})
+      {
+        options.headers.set('Authorization', session.tokens!.idToken!.toString())
+      },
+      onResponseError(error)
+      {
+        throw showError({ statusCode: error.response.status, statusMessage: error.response.statusText });
+      }
+    }
+  );
+
   const filter_ops = 
   [{
     label: "None",
@@ -111,6 +129,7 @@
   {
     window.removeEventListener('resize', onResize)
   });
+
 </script>
 
 <style scoped>
