@@ -5,14 +5,9 @@
 
 <template>
   <div>
-    <authenticator>
+    <authenticator :hide-sign-up="true" class="flex pt-8">
       <template v-slot="{ user, signOut }">
         <UApp>
-          <!--
-          <h1>Hello {{user?.signInDetails?.loginId}}'s todos</h1>
-          <Todos />
-          <button @click="signOut">Sign Out</button>
-          -->
           <NuxtLayout :signOut="signOut">
             <NuxtPage />
           </NuxtLayout>
@@ -21,3 +16,6 @@
     </authenticator>
   </div>
 </template>
+
+<style lang="css">
+</style>
