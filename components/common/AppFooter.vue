@@ -2,9 +2,6 @@
   <footer>
     <div class="content">
       <nuxt-link to="/" class="logo-font">DiffVers</nuxt-link>
-      <span class="attribution">
-        
-      </span>
     </div>
   </footer>
 </template>
@@ -26,8 +23,8 @@
     font-weight:normal;
     color:#444;
     display:block;
-    font-size:32px;
-    line-height:48px;
+    font-size:24px;
+    line-height:32px;
     letter-spacing:-2px;
     text-shadow:3px 3px 6px #888;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="grid grid-rows-[max-content_1fr_max-content] grid-cols-[1fr] min-h-screen w-full h-full">
     <CommonAppHeader class="header" :signOut="props.signOut"/>
     <slot class="body"/>
     <CommonAppFooter class="footer" />
@@ -11,29 +11,6 @@
 </script>
 
 <style scoped>
-  .content 
-  {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-rows: max-content 1fr max-content;
-    grid-template-columns: 1fr;
-    min-height: 100vh;
-  }
 
-  .header
-  {
-
-  }
-
-  .body
-  {
-
-  }
-
-  .footer
-  {
-
-  }
 
 </style>
