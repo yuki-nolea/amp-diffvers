@@ -1,7 +1,7 @@
 <template>
-  <div class="content">
+  <div class="grid grid-rows-[max-content_auto_max-content] grid-cols-[1fr] min-h-screen w-full h-screen">
     <CommonAppHeader class="header" :signOut="props.signOut"/>
-    <slot class="body"/>
+    <slot />
     <CommonAppFooter class="footer" />
   </div>
 </template>
@@ -11,29 +11,6 @@
 </script>
 
 <style scoped>
-  .content 
-  {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-rows: max-content 1fr max-content;
-    grid-template-columns: 1fr;
-    min-height: 100vh;
-  }
 
-  .header
-  {
-
-  }
-
-  .body
-  {
-
-  }
-
-  .footer
-  {
-
-  }
 
 </style>

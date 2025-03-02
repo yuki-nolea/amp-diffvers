@@ -1,36 +1,30 @@
 <template>
-  <div class="home-page">
-    <div class="content">
-      <UTabs :items="items" class="w-full" />
-    </div>
+  <div class="flex flex-col overflow-hidden">
+    <UTabs :items="items" :ui="{ wrapper: 'space-y-0 w-full h-full flex flex-col', container: 'w-full h-full', base: 'h-full' }">
+      <template #diff-version>
+        <ViewDiffVersions/>
+      </template>
+      <template #note>
+        this is note
+      </template>
+    </UTabs>
   </div>
 </template>
 
 <script setup lang="ts">
-  const items = 
-  ref([{
+  const items = ref(
+  [{
     label: 'Diff Versions',
     icon: 'icon-park-twotone:difference-set',
-    content: 'This is the content shown for Tab1'
+    slot: 'diff-version'
   }, {
     label: 'Note',
     icon: 'gridicons:notice-outline',
-    content: 'And, this is the content for Tab2'
+    slot: 'note'
   }]);
-
 
 </script>
 
 <style scoped>
-.home-page
-{
-  display: flex;
-  flex-direction: column;
-}
-
-.content
-{
-  overflow: hidden;
-}
 
 </style>

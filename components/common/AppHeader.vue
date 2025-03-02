@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-light">
-    <div class="content">
+  <nav class="navbar">
+    <div class="grid grid-cols-[max-content_1fr_max-content] grid-ros-[1fr] px-4">
       <nuxt-link to="/" class="navbar-brand">DiffVers</nuxt-link>
       <div class="gap"></div>
       <CommonNavigationBar :signOut="props.signOut"/>
@@ -14,13 +14,6 @@
 
 
 <style scoped>
-  .content
-  {
-    display: grid;
-    grid-template-columns: max-content 1fr max-content;
-    grid-template-rows: 1fr;
-    padding: 0 20px 0 20px;
-  }
   .navbar
   {
     height: max-content;
