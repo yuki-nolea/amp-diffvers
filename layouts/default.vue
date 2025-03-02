@@ -1,7 +1,7 @@
 <template>
-  <div class="grid grid-rows-[max-content_1fr_max-content] grid-cols-[1fr] min-h-screen w-full h-full">
+  <div class="grid grid-rows-[max-content_auto_max-content] grid-cols-[1fr] min-h-screen w-full h-screen">
     <CommonAppHeader class="header" :signOut="props.signOut"/>
-    <slot class="body"/>
+    <slot />
     <CommonAppFooter class="footer" />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full h-full m-0 p-1" ref="wrapper">
+  <div class="flex flex-col w-full max-h-full m-0 p-1 overflow-auto" ref="wrapper">
     <div class="bg-orange-200 grid grid-rows-2 grid-cols-2 pt-[20px] px-[20px]">
       <div class="row-start-1 col-start-1 col-span-2">
         <div class="flex items-center gap-2">
@@ -115,6 +115,7 @@
   const right_version = ref(version_ops[0].value);
 
   const wrapper = ref();
+
   const onResize = () =>
   {
     console.log(wrapper.value.getBoundingClientRect().height)
@@ -130,11 +131,9 @@
     window.removeEventListener('resize', onResize)
   });
 
+
 </script>
 
 <style scoped>
-  .content
-  {
-    background-color:aqua;
-  }
+
 </style>

@@ -1,15 +1,13 @@
 <template>
-  <div class="flex flex-col">
-    <div class="h-full overflow-hidden">
-      <UTabs :items="items" :ui="{ container: 'w-full h-full', wrapper: 'space-y-0 flex flex-col', base: 'h-full' }" class="w-full h-full">
-        <template #diff-version class="h-full">
-          <ViewDiffVersions/>
-        </template>
-        <template #note class="h-full">
-          this is note
-        </template>
-      </UTabs>
-    </div>
+  <div class="flex flex-col overflow-hidden">
+    <UTabs :items="items" :ui="{ wrapper: 'space-y-0 w-full h-full flex flex-col', container: 'w-full h-full', base: 'h-full' }">
+      <template #diff-version>
+        <ViewDiffVersions/>
+      </template>
+      <template #note>
+        this is note
+      </template>
+    </UTabs>
   </div>
 </template>
 
@@ -28,6 +26,5 @@
 </script>
 
 <style scoped>
-
 
 </style>
