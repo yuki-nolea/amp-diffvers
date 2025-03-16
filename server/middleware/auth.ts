@@ -17,11 +17,11 @@ export default defineEventHandler(async (event) => {
       });
 
       const payload = await verifier.verify(getRequestHeader(event, 'Authorization')!);
-      console.log("Token is valid. Payload:", payload);
+      //console.log("Token is valid. Payload:", payload);
     }
     catch
     {
-      //console.log("Token is invalid.")
+      console.log("Token is invalid.")
       //throw createError({ statusCode: 403, statusMessage: "Forbbiden, Not authenticated."});
     }
   }
