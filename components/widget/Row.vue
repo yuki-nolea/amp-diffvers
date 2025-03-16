@@ -3,7 +3,8 @@
     grid grid-rows-[1fr] grid-cols-[158px_96px_158px_1fr] 
     shadow-[0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24)]
     transition-all duration-300 ease-[cubic-bezier(.25,.8,.25,1)]
-    h-full w-full bg-[#fff] text-sm rounded-sm p-0"
+    h-full w-full bg-[#fff] text-sm rounded-sm p-0
+    min-w-[700px] text-overflow: ellipsis"
   >
     <div :class="classObject(nameDiff)" class="name param_cell col-start-1 p-1" data-id="" v-html="name"></div>
     <div v-if="coin == 1" :class="classObject(mandatoryDiff)" class="mandatory param_cell col-start-2 p-1" data-id="" v-html="mandatory"></div>

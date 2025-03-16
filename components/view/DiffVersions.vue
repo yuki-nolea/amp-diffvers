@@ -1,5 +1,5 @@
 <template>
-  <div class="content flex flex-col w-full max-h-full m-0 p-1 overflow-auto">
+  <div class="content flex flex-col w-full max-h-full m-0 p-1 overflow-y-auto overflow-x-clip">
     <div class="grid grid-rows-2 grid-cols-2 pt-[20px] px-[20px]">
       <div class="row-start-1 col-start-1 col-span-2 flex gap-12 mb-5">
         <div class="flex items-center gap-2">
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <UDivider />
+    <UDivider class="w-full" />
     <div class="grow m-4 mb-12">
       <div class="param-row flex gap-3">
         <div class="param-card w-full">
@@ -155,7 +155,7 @@
     filtered_params.value = ret;
   })
 
-  console.log(filtered_params);
+  //console.log(filtered_params);
 
 </script>
 

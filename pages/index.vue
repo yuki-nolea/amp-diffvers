@@ -5,7 +5,7 @@
         <ViewDiffVersions/>
       </template>
       <template #note>
-        this is note
+        <ViewNote/>
       </template>
     </UTabs>
   </div>
