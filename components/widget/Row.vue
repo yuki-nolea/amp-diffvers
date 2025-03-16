@@ -3,13 +3,13 @@
     grid grid-rows-[1fr] grid-cols-[158px_96px_158px_1fr] 
     shadow-[0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24)]
     transition-all duration-300 ease-[cubic-bezier(.25,.8,.25,1)]
-    w-full bg-[#fff] text-sm rounded-sm p-1"
+    h-full w-full bg-[#fff] text-sm rounded-sm p-0"
   >
-    <div :class="classObject(nameDiff)" class="name param_cell col-start-1" data-id="">{{ name }}</div>
-    <div v-if="coin == 1" :class="classObject(mandatoryDiff)" class="mandatory param_cell col-start-2" data-id="">{{ mandatory }}</div>
-    <div v-if="coin == 1" :class="classObject(rangeDiff)" class="range param_cell col-start-3" data-id="">{{ range }}</div>
-    <div v-if="coin == 1" :class="classObject(defaultDiff)" class="default param_cell col-start-4" data-id="">{{ default }}</div>
-    <div v-if="coin == 0" :class="classObject(descriptionDiff)" class="description param_cell col-start-2 col-span-3" data-id="">{{ description }}</div>
+    <div :class="classObject(nameDiff)" class="name param_cell col-start-1 p-1" data-id="" v-html="name"></div>
+    <div v-if="coin == 1" :class="classObject(mandatoryDiff)" class="mandatory param_cell col-start-2 p-1" data-id="" v-html="mandatory"></div>
+    <div v-if="coin == 1" :class="classObject(rangeDiff)" class="range param_cell col-start-3 p-1" data-id="" v-html="range"></div>
+    <div v-if="coin == 1" :class="classObject(defaultDiff)" class="default param_cell col-start-4 p-1" data-id="" v-html="default"></div>
+    <div v-if="coin == 0" :class="classObject(descriptionDiff)" class="description param_cell col-start-2 col-span-3 p-1" data-id="" v-html="description"></div>
   </div>
 </template>
 
@@ -51,7 +51,7 @@
   .difference
   {
     color: white;
-    background-color: red;
+    background-color: oklch(0.577 0.245 27.325);
   }
 
   .alone

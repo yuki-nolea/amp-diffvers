@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
       });
 
       const payload = await verifier.verify(getRequestHeader(event, 'Authorization')!);
-      //console.log("Token is valid. Payload:", payload);
+      console.log("Token is valid. Payload:", payload);
     }
     catch
     {

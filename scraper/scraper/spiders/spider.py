@@ -78,38 +78,42 @@ class ZabbixParamsSpider(scrapy.Spider):
     # DB投入用に各行データにprocess, version情報を追加
     db = []
     for i in range(len(ntable)):
-      db.append(tuple([process, version, ntable[i][1:5]]))
+      db.append([process, version] + ntable[i][0:5])
+
+    print(db[0])
 
     # csvファイルに行データを保存する
     filename = "zabbix-parameters/" + process_alias + "_" + version + '.csv'
     with open(filename, 'w') as f:
       writer = csv.writer(f)
-      writer.writerows(db)
+      writer.writerow(["process", "version", "name", "nameDiff", "mandatory", "mandatoryDiff", "range", "rangeDiff", "default", "defaultDiff", "description", "descriptionDiff"])
+      for i in range(len(db)):
+        writer.writerow([db[i][0], db[i][1], db[i][2], "match", db[i][3], "match", db[i][4], "match", db[i][5], "match", db[i][6], "match"])
 
-    # dynamodb上に指定のプロセス、バージョンを名前に持つテーブルを作成（存在しない場合のみ作成）
-    dynamodb_table = self.create_table(process_alias + "_" + version)
+  #   # dynamodb上に指定のプロセス、バージョンを名前に持つテーブルを作成（存在しない場合のみ作成）
+  #   dynamodb_table = self.create_table(process_alias + "_" + version)
 
-    # 行データをdynamodbに保存
-    for i in range(len(db)):
-      dynamodb_table.put_item(Item={"Process": db[i][0], "Ver": db[i][1], "ParamName": db[i][2], "Mandatory": db[i][3], "ValRange": db[i][4], "ValDefault": db[i][5], "ParamDesc": db[i][6]})
+  #   # 行データをdynamodbに保存
+  #   for i in range(len(db)):
+  #     dynamodb_table.put_item(Item={"Process": db[i][0], "Ver": db[i][1], "ParamName": db[i][2], "Mandatory": db[i][3], "ValRange": db[i][4], "ValDefault": db[i][5], "ParamDesc": db[i][6]})
 
         
-  # DynamoDB上に指定された名前（<tablename>）のテーブルを作成し、参照を返す（<tablename>名のテーブルが存在しない場合のみ）
-  def create_table(self, tablename):
-    try:
-      params = {
-        "TableName": tablename,
-        "KeySchema": [ {"AttributeName": "ParamName", "KeyType": "HASH"}, ],
-        "AttributeDefinitions": [ {"AttributeName": "ParamName", "AttributeType": "S"}, ],
-        "ProvisionedThroughput": {"ReadCapacityUnits": 10, "WriteCapacityUnits": 10},
-      }
-      table = self.dynamodb.create_table(**params)
+  # # DynamoDB上に指定された名前（<tablename>）のテーブルを作成し、参照を返す（<tablename>名のテーブルが存在しない場合のみ）
+  # def create_table(self, tablename):
+  #   try:
+  #     params = {
+  #       "TableName": tablename,
+  #       "KeySchema": [ {"AttributeName": "ParamName", "KeyType": "HASH"}, ],
+  #       "AttributeDefinitions": [ {"AttributeName": "ParamName", "AttributeType": "S"}, ],
+  #       "ProvisionedThroughput": {"ReadCapacityUnits": 10, "WriteCapacityUnits": 10},
+  #     }
+  #     table = self.dynamodb.create_table(**params)
 
-      print(f"Creating {tablename}...")
-      table.wait_until_exists()
-      return table
+  #     print(f"Creating {tablename}...")
+  #     table.wait_until_exists()
+  #     return table
 
-    # 指定された名前のテーブルが既に存在している場合はその参照を返す
-    except ClientError as e:
-      return self.dynamodb.Table(tablename)
+  #   # 指定された名前のテーブルが既に存在している場合はその参照を返す
+  #   except ClientError as e:
+  #     return self.dynamodb.Table(tablename)
     
