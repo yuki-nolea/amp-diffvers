@@ -1,0 +1,2 @@
+process,version,name,mandatory,range,default,description,
+Zabbix server,4.0,"['yes', '', '', 'Database name.']"
